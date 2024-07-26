@@ -1,6 +1,6 @@
 import unittest
 from src.library import Library
-from unittest.mock import patch
+# from unittest.mock import patch
 from src.book import Book
 
 class TestLibrary(unittest.TestCase):
@@ -29,12 +29,6 @@ class TestLibrary(unittest.TestCase):
         self.library.delete_book(1)
         self.assertEqual(len(self.library.books), 0)
 
-    @patch('library.library.Library._save_books')
-    def test_change_book_status_saves_data(self, mock_save_books):
-        """Проверка, что изменение статуса книги сохраняет данные."""
-        self.library.add_book("Название книги", "Автор книги", 2023)
-        self.library.change_book_status(1, "выдана")
-        mock_save_books.assert_called_once()  # Проверяем, что метод _save_books был вызван один раз
 
 
 

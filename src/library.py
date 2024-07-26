@@ -8,7 +8,7 @@ class Library:
     Класс для управления библиотекой книг.
     Внутренние переменные:
     book_valid_search_fields - список полей, по которым можно искать книги
-    valid_book_statuses - список статусов книг (по условию "выдана" и "в наличии"
+    valid_book_statuses - список статусов книг (по условию "выдана" и "в наличии")
     """
 
     MAX_BOOK_COUNT = 10_000
@@ -124,3 +124,5 @@ class Library:
         ids = [book.id for book in self.books]
         for i in ids:
             self.delete_book(i)
+        self._save_books()
+        return len(ids)
